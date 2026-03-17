@@ -35,6 +35,15 @@ gemsRouter.get("/", async (req, res) => {
   return res.json(gems);
 });
 
+gemsRouter.get("/mine", requireAuth, requireRole("USER", "ADMIN"), async (req, res) => {
+  const gems = await prisma.gem.findMany({
+    where: { sellerId: req.user!.sub },
+    orderBy: { createdAt: "desc" },
+  });
+
+  return res.json(gems);
+});
+
 gemsRouter.post("/", requireAuth, requireRole("USER", "ADMIN"), async (req, res) => {
   const parsed = createGemSchema.safeParse(req.body);
   if (!parsed.success) {

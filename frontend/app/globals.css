@@ -85,6 +85,16 @@ a {
   cursor: pointer;
 }
 
+.input {
+  width: 100%;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 10px 12px;
+  font: inherit;
+  color: var(--text);
+  background: rgba(255, 255, 255, 0.88);
+}
+
 .bg-gems {
   position: fixed;
   inset: 0;

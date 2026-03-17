@@ -22,6 +22,20 @@ adminRouter.get("/users", async (_req, res) => {
   return res.json(users);
 });
 
+adminRouter.get("/gems/pending", async (_req, res) => {
+  const gems = await prisma.gem.findMany({
+    where: { status: GemStatus.PENDING },
+    include: {
+      seller: {
+        select: { id: true, name: true, email: true },
+      },
+    },
+    orderBy: { createdAt: "desc" },
+  });
+
+  return res.json(gems);
+});
+
 adminRouter.put("/gems/:id/approve", async (req, res) => {
   const gem = await prisma.gem.update({
     where: { id: req.params.id },

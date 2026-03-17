@@ -26,6 +26,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
             <strong>Gem Marketplace</strong>
             <nav className="links">
               <Link href="/">Marketplace</Link>
+              <Link href="/auth">Account</Link>
               <Link href="/seller">Seller</Link>
               <Link href="/orders">Orders</Link>
               <Link href="/admin">Admin</Link>

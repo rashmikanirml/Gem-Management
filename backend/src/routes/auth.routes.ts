@@ -27,8 +27,11 @@ authRouter.post("/register", async (req, res) => {
   }
 
   const passwordHash = await bcrypt.hash(password, 10);
+  const adminCount = await prisma.user.count({ where: { role: UserRole.ADMIN } });
+  const role = adminCount === 0 ? UserRole.ADMIN : UserRole.USER;
+
   const user = await prisma.user.create({
-    data: { name, email, passwordHash, role: UserRole.USER },
+    data: { name, email, passwordHash, role },
   });
 
   return res.status(201).json({ id: user.id, email: user.email, role: user.role });
