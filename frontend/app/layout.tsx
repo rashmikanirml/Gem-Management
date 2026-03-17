@@ -1,6 +1,7 @@
 import "./globals.css";
 import Link from "next/link";
 import type { ReactNode } from "react";
+import AuthStatus from "../components/AuthStatus";
 
 export const metadata = {
   title: "Gem Marketplace",
@@ -24,13 +25,16 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         <div className="container">
           <header className="nav">
             <strong>Gem Marketplace</strong>
-            <nav className="links">
-              <Link href="/">Marketplace</Link>
-              <Link href="/auth">Account</Link>
-              <Link href="/seller">Seller</Link>
-              <Link href="/orders">Orders</Link>
-              <Link href="/admin">Admin</Link>
-            </nav>
+            <div className="nav-right">
+              <nav className="links">
+                <Link href="/">Marketplace</Link>
+                <Link href="/auth">Account</Link>
+                <Link href="/seller">Seller</Link>
+                <Link href="/orders">Orders</Link>
+                <Link href="/admin">Admin</Link>
+              </nav>
+              <AuthStatus />
+            </div>
           </header>
           {children}
         </div>
