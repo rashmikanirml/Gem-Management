@@ -11,6 +11,16 @@ export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="en">
       <body>
+        <div className="bg-gems" aria-hidden="true">
+          <span className="gem-bubble b1" />
+          <span className="gem-bubble b2" />
+          <span className="gem-bubble b3" />
+          <span className="gem-bubble b4" />
+          <span className="gem-bubble b5" />
+          <span className="gem-bubble b6" />
+          <span className="gem-bubble b7" />
+          <span className="gem-bubble b8" />
+        </div>
         <div className="container">
           <header className="nav">
             <strong>Gem Marketplace</strong>
