@@ -6,6 +6,7 @@ import { apiRequest } from "../lib/api";
 type Gem = {
   id: string;
   title: string;
+  imageUrl?: string | null;
   type: string;
   weightCarats: string;
   color: string;
@@ -45,6 +46,7 @@ export default function MarketplacePage() {
       <section className="grid grid-3">
         {gems.map((gem) => (
           <article key={gem.id} className="card">
+            {gem.imageUrl ? <img src={gem.imageUrl} alt={gem.title} style={{ width: "100%", maxHeight: 220, objectFit: "cover", borderRadius: 12, marginBottom: 10 }} /> : null}
             <h3>{gem.title}</h3>
             <p>{gem.type}</p>
             <p>{gem.weightCarats} ct</p>

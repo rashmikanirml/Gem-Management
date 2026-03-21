@@ -8,11 +8,13 @@ type Gem = {
   title: string;
   status: "PENDING" | "APPROVED" | "REJECTED" | "SOLD";
   price: string;
+  imageUrl?: string | null;
 };
 
 const initialForm = {
   title: "",
   description: "",
+  imageUrl: "",
   type: "",
   weightCarats: "",
   color: "",
@@ -53,6 +55,7 @@ export default function SellerDashboardPage() {
         body: {
           title: form.title,
           description: form.description,
+          imageUrl: form.imageUrl || undefined,
           type: form.type,
           weightCarats: Number(form.weightCarats),
           color: form.color,
@@ -81,6 +84,7 @@ export default function SellerDashboardPage() {
         <form onSubmit={onSubmit} className="grid grid-3" style={{ gap: 12 }}>
           <input className="input" placeholder="Title" value={form.title} onChange={(e) => setForm({ ...form, title: e.target.value })} required />
           <input className="input" placeholder="Type" value={form.type} onChange={(e) => setForm({ ...form, type: e.target.value })} required />
+          <input className="input" placeholder="Image URL (optional)" value={form.imageUrl} onChange={(e) => setForm({ ...form, imageUrl: e.target.value })} />
           <input className="input" placeholder="Weight (carats)" type="number" step="0.01" value={form.weightCarats} onChange={(e) => setForm({ ...form, weightCarats: e.target.value })} required />
           <input className="input" placeholder="Color" value={form.color} onChange={(e) => setForm({ ...form, color: e.target.value })} required />
           <input className="input" placeholder="Clarity" value={form.clarity} onChange={(e) => setForm({ ...form, clarity: e.target.value })} required />
@@ -98,6 +102,7 @@ export default function SellerDashboardPage() {
         <div className="grid" style={{ gap: 8 }}>
           {gems.map((gem) => (
             <div key={gem.id} className="card">
+              {gem.imageUrl ? <img src={gem.imageUrl} alt={gem.title} style={{ width: "100%", maxHeight: 220, objectFit: "cover", borderRadius: 12, marginBottom: 8 }} /> : null}
               <strong>{gem.title}</strong>
               <p>Status: {gem.status}</p>
               <p>Price: ${Number(gem.price).toLocaleString()}</p>

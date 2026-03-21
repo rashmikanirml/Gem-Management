@@ -47,6 +47,7 @@ model Gem {
   sellerId      String
   title         String
   description   String
+  imageUrl      String?
   type          String
   weightCarats  Decimal   @db.Decimal(10, 2)
   color         String

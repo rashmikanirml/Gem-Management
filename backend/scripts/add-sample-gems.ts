@@ -10,6 +10,8 @@ const sampleGems = [
     description:
       "Unheated natural sapphire with vivid royal blue saturation and excellent luster, ideal for a center stone.",
     type: "Sapphire",
+    imageUrl:
+      "https://images.unsplash.com/photo-1617713964959-d9a36bbc7b52?auto=format&fit=crop&w=1200&q=80",
     weightCarats: 2.45,
     color: "Royal Blue",
     clarity: "VS",
@@ -22,6 +24,8 @@ const sampleGems = [
     description:
       "Natural ruby with strong red fluorescence and rich pigeon blood tone, eye-clean and finely cut.",
     type: "Ruby",
+    imageUrl:
+      "https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?auto=format&fit=crop&w=1200&q=80",
     weightCarats: 1.82,
     color: "Vivid Red",
     clarity: "VVS",
@@ -34,6 +38,8 @@ const sampleGems = [
     description:
       "Minor-oil emerald featuring bright green body color and balanced transparency with elegant emerald cut.",
     type: "Emerald",
+    imageUrl:
+      "https://images.unsplash.com/photo-1523170335258-f5c7b9f5a17f?auto=format&fit=crop&w=1200&q=80",
     weightCarats: 3.1,
     color: "Intense Green",
     clarity: "SI",
@@ -46,6 +52,8 @@ const sampleGems = [
     description:
       "Rare lotus-tone sapphire with pink-orange blend and very good brilliance, suitable for bespoke jewelry.",
     type: "Sapphire",
+    imageUrl:
+      "https://images.unsplash.com/photo-1556228453-efd6c1ff04f6?auto=format&fit=crop&w=1200&q=80",
     weightCarats: 1.36,
     color: "Padparadscha",
     clarity: "VS",
@@ -58,6 +66,8 @@ const sampleGems = [
     description:
       "Neon blue-green copper-bearing tourmaline with strong glow and premium saturation in a precision oval cut.",
     type: "Tourmaline",
+    imageUrl:
+      "https://images.unsplash.com/photo-1566793474285-2decf0fc1821?auto=format&fit=crop&w=1200&q=80",
     weightCarats: 1.04,
     color: "Neon Blue-Green",
     clarity: "VVS",
@@ -93,6 +103,14 @@ async function main() {
     });
 
     if (existing) {
+      await prisma.gem.update({
+        where: { id: existing.id },
+        data: {
+          imageUrl: gem.imageUrl,
+          description: gem.description,
+          status: GemStatus.APPROVED,
+        },
+      });
       continue;
     }
 
@@ -101,6 +119,7 @@ async function main() {
         sellerId: seller.id,
         title: gem.title,
         description: gem.description,
+        imageUrl: gem.imageUrl,
         type: gem.type,
         weightCarats: gem.weightCarats,
         color: gem.color,

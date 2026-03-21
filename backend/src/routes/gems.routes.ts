@@ -9,6 +9,7 @@ export const gemsRouter = Router();
 const createGemSchema = z.object({
   title: z.string().min(3),
   description: z.string().min(10),
+  imageUrl: z.string().url().optional(),
   type: z.string().min(2),
   weightCarats: z.number().positive(),
   color: z.string().min(2),
@@ -56,6 +57,7 @@ gemsRouter.post("/", requireAuth, requireRole("USER", "ADMIN"), async (req, res)
       sellerId: req.user!.sub,
       title: data.title,
       description: data.description,
+      imageUrl: data.imageUrl,
       type: data.type,
       weightCarats: data.weightCarats,
       color: data.color,
