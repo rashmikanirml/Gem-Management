@@ -126,6 +126,96 @@ a {
   overflow: hidden;
 }
 
+.gem-ai-fab {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  z-index: 40;
+  border: 0;
+  border-radius: 999px;
+  padding: 12px 16px;
+  font: inherit;
+  font-weight: 600;
+  color: #fff;
+  background: linear-gradient(135deg, #0d7dcf, #26a0f2);
+  box-shadow: 0 12px 28px rgba(14, 120, 193, 0.36);
+  cursor: pointer;
+}
+
+.gem-ai-panel {
+  position: fixed;
+  right: 20px;
+  bottom: 76px;
+  width: min(360px, calc(100vw - 24px));
+  max-height: 72vh;
+  display: grid;
+  gap: 10px;
+  z-index: 39;
+  border-radius: 14px;
+  padding: 12px;
+  background: rgba(244, 252, 255, 0.96);
+  border: 1px solid rgba(98, 168, 220, 0.35);
+  box-shadow: 0 16px 40px rgba(32, 103, 158, 0.24);
+  backdrop-filter: blur(6px);
+}
+
+.gem-ai-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.gem-ai-messages {
+  display: grid;
+  gap: 8px;
+  overflow: auto;
+  padding-right: 2px;
+}
+
+.gem-ai-message {
+  margin: 0;
+  border-radius: 10px;
+  padding: 8px 10px;
+  white-space: pre-line;
+  font-size: 14px;
+  line-height: 1.35;
+}
+
+.gem-ai-message.assistant {
+  background: rgba(219, 241, 255, 0.9);
+  border: 1px solid rgba(130, 188, 230, 0.45);
+}
+
+.gem-ai-message.user {
+  background: rgba(31, 132, 217, 0.12);
+  border: 1px solid rgba(31, 132, 217, 0.24);
+}
+
+.gem-ai-quick-prompts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.gem-ai-chip {
+  border: 1px solid rgba(99, 164, 214, 0.4);
+  border-radius: 999px;
+  padding: 6px 10px;
+  background: rgba(255, 255, 255, 0.88);
+  color: var(--text);
+  font: inherit;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.gem-ai-form {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 8px;
+}
+
 .gem-bubble {
   position: absolute;
   border-radius: 50%;
@@ -188,4 +278,15 @@ a {
   .b3 { width: 122px; height: 122px; left: 28%; }
   .b6 { width: 116px; height: 116px; left: 70%; }
   .auth-text { max-width: 120px; }
+  .gem-ai-fab {
+    right: 12px;
+    bottom: 12px;
+    padding: 10px 14px;
+  }
+  .gem-ai-panel {
+    right: 12px;
+    bottom: 64px;
+    width: calc(100vw - 24px);
+    max-height: 76vh;
+  }
 }

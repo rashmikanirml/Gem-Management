@@ -2,6 +2,7 @@ import "./globals.css";
 import Link from "next/link";
 import type { ReactNode } from "react";
 import AuthStatus from "../components/AuthStatus";
+import GemAiChatbot from "../components/GemAiChatbot";
 
 export const metadata = {
   title: "Gem Marketplace",
@@ -38,6 +39,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
           </header>
           {children}
         </div>
+        <GemAiChatbot />
       </body>
     </html>
   );
